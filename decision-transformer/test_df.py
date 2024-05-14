@@ -31,6 +31,7 @@ def experiment(
         )
     # Generate a random input tensor
     input_tensor = torch.randn(1, max_ep_len, state_dim)
+    pdb.set_trace()
     state_preds, action_preds, reward_preds = self.model.forward(
             states, actions, rewards, masks=None, attention_mask=attention_mask, target_return=returns,
         )

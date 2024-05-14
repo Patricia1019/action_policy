@@ -1,0 +1,96 @@
+{
+  "sample_weights": "balance",
+  "num_workers": 8,
+  "relabel_actions": true,
+  "goal_relabeling_strategy": "uniform",
+  "augment": false,
+  "dtype": "fp32",
+  "encoder": "resnetv1-34-bridge",
+  "save_dir": "gc_bc_save",
+  "ckpt_id": null,
+  "train_batch_size": 256,
+  "gradient_accumulation_steps": 1,
+  "eval_batch_size": 256,
+  "max_lr": 0.0003,
+  "min_lr": 1e-05,
+  "weight_decay": 1e-06,
+  "max_grad_norm": 5.0,
+  "epochs": null,
+  "steps": 300000,
+  "warmup_steps": 10000,
+  "decay_steps": null,
+  "log_interval": 5000,
+  "eval_interval": 10000,
+  "save_interval": 10000,
+  "save_best": true,
+  "main_metric": "log_probs",
+  "method": "gc_bc",
+  "random_seed": 42,
+  "datasets": [
+    "/home/yupeiqi/bridge_data_v2/raw_pkl"
+  ],
+  "act_mean": [
+    0.00019296819,
+    0.00013667766,
+    -0.00014583133,
+    -0.00018390431,
+    -0.00030808983,
+    0.0002742527,
+    0.59716219
+  ],
+  "act_std": [
+    0.00912848,
+    0.0127196,
+    0.01229497,
+    0.02606696,
+    0.02875283,
+    0.07807977,
+    0.48710242
+  ],
+  "goal_relabeling_kwargs": {
+    "reached_proportion": 0.0
+  },
+  "augment_kwargs": {
+    "random_resized_crop": {
+      "size": [
+        128,
+        128
+      ],
+      "scale": [
+        0.8,
+        1.0
+      ],
+      "ratio": [
+        0.9,
+        1.1
+      ],
+      "antialias": true
+    },
+    "color_jitter": {
+      "brightness": 0.2,
+      "contrast": [
+        0.8,
+        1.2
+      ],
+      "saturation": [
+        0.8,
+        1.2
+      ],
+      "hue": 0.1
+    },
+    "augment_order": [
+      "random_resized_crop",
+      "color_jitter"
+    ]
+  },
+  "encoder_kwargs": {
+    "pooling_method": "avg",
+    "add_spatial_coordinates": true,
+    "act": "SiLU",
+    "input_img_shape": [
+      128,
+      128
+    ],
+    "input_channels": 6
+  }
+}
